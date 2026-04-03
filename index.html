@@ -1,0 +1,102 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartStudy AI Pro</title><style>
+body { margin:0; font-family: Arial; background:#0f172a; color:white; }
+header { background:#1e293b; padding:15px; text-align:center; font-size:22px; }
+.container { padding:20px; }
+.card { background:#1e293b; padding:15px; margin:10px 0; border-radius:10px; cursor:pointer; transition:0.3s; }
+.card:hover { transform:scale(1.05); background:#334155; }
+#lessonArea { margin-top:20px; }
+button { padding:10px; border:none; background:#3b82f6; color:white; border-radius:5px; cursor:pointer; }
+.quiz-option { margin:5px 0; padding:10px; background:#334155; border-radius:5px; cursor:pointer; }
+.chatbox { margin-top:20px; }
+input { padding:10px; width:70%; }
+.chat-output { margin-top:10px; background:#1e293b; padding:10px; border-radius:5px; }
+</style></head><body>
+<header>🤖 SmartStudy AI PRO (CBSE + Commerce)</header><div class="container"><div class="card" onclick="showLesson('math')">📐 Maths</div>
+<div class="card" onclick="showLesson('science')">🔬 Science</div>
+<div class="card" onclick="showLesson('accounts')">📊 Accountancy</div>
+<div class="card" onclick="showLesson('business')">📈 Business Studies</div>
+<div class="card" onclick="showLesson('economics')">💰 Economics</div>
+<div class="card" onclick="showQuiz()">🧠 Quiz Test</div>
+<div class="card" onclick="showChat()">🤖 AI Doubt Solver</div><div id="lessonArea"></div></div><script>
+function showLesson(type){
+let content="";
+
+if(type==='math'){
+content=`<h2>Speed Concept</h2>
+<p>Speed = Distance / Time</p>
+<div style="background:green;padding:20px;border-radius:10px;animation:bounce 2s infinite">🚗 Moving Car</div>
+<p>Example: 120km / 2hr = 60 km/h</p>`;
+}
+
+if(type==='science'){
+content=`<h2>Water Cycle</h2>
+<div style="background:blue;padding:20px;border-radius:10px;animation:bounce 2s infinite">☁️ → 🌧️ → 🌊</div>
+<p>Evaporation → Condensation → Rain</p>`;
+}
+
+if(type==='accounts'){
+content=`<h2>Accountancy: Journal Entry</h2>
+<p>Debit what comes in, Credit what goes out</p>
+<div style="background:orange;padding:20px;border-radius:10px;animation:bounce 2s infinite">📒 Entry</div>
+<p>Example: Cash A/c Dr → To Sales A/c</p>`;
+}
+
+if(type==='business'){
+content=`<h2>Business Studies: Management</h2>
+<p>Management = Planning + Organizing + Controlling</p>
+<div style="background:purple;padding:20px;border-radius:10px;animation:bounce 2s infinite">🏢 Business</div>`;
+}
+
+if(type==='economics'){
+content=`<h2>Economics: Demand Law</h2>
+<p>When price increases, demand decreases</p>
+<div style="background:red;padding:20px;border-radius:10px;animation:bounce 2s infinite">📉 Demand</div>`;
+}
+
+document.getElementById('lessonArea').innerHTML=content;
+}
+
+function showQuiz(){
+let content=`<h2>Quiz</h2>
+<p>What is Accounting Rule?</p>
+<div class="quiz-option" onclick="checkAnswer(true)">Debit what comes in</div>
+<div class="quiz-option" onclick="checkAnswer(false)">Credit what comes in</div>
+<p id="result"></p>`;
+document.getElementById('lessonArea').innerHTML=content;
+}
+
+function checkAnswer(correct){
+document.getElementById('result').innerText = correct ? "✅ Correct" : "❌ Wrong";
+}
+
+function showChat(){
+let content=`<h2>AI Doubt Solver</h2>
+<div class="chatbox">
+<input id="userInput" placeholder="Ask any subject...">
+<button onclick="answer()">Ask</button>
+<div id="chatOutput" class="chat-output"></div>
+</div>`;
+document.getElementById('lessonArea').innerHTML=content;
+}
+
+function answer(){
+let q=document.getElementById('userInput').value.toLowerCase();
+let res="";
+
+if(q.includes('speed')) res="Speed = Distance / Time";
+else if(q.includes('water')) res="Water cycle: evaporation, condensation, rain";
+else if(q.includes('account')) res="Debit what comes in, Credit what goes out";
+else if(q.includes('business')) res="Management includes planning, organizing, controlling";
+else if(q.includes('economics')) res="Law of demand: price ↑ demand ↓";
+else res="Ask about Maths, Science, Accounts, Business, Economics";
+
+document.getElementById('chatOutput').innerText=res;
+}
+</script><style>
+@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+</style></body>
+</html>
